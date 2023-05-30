@@ -27,19 +27,18 @@ public class PurchaseController {
 
     @RequestMapping
     public List<Purchases> getAllPurchases(){
-        log.error("Showing all purchases");
+        log.info("Showing all purchases");
         return purchaseRepo.findAll();
     }
 
-   /*@PostMapping("/add")
+    @PostMapping("/add")
     public List<Purchases> addPurchase(@RequestBody Purchases p) {
-        //Purchases purchases = restTemplate.getForObject()
         purchaseRepo.save(p);
-        log.error("Purchase by " + p.getCustomerId() + " was added");
+        log.info("Purchase by " + p.getCustomerId() + " was added");
         return purchaseRepo.findAll();
-    }*/
+    }
 
-   @PostMapping(path = "/add") // Map ONLY POST Requests
+   /*@PostMapping(path = "/add") // Map ONLY POST Requests
     public Purchases addNewPurchase(@RequestBody Purchases p) {
 
         Purchases purchases = new Purchases();
@@ -47,7 +46,7 @@ public class PurchaseController {
         purchases.setCustomerId(p.getCustomerId());
         purchaseRepo.save(purchases);
         return purchases;
-    }
+    }*/
 
 
 
@@ -59,7 +58,7 @@ public class PurchaseController {
 
     @RequestMapping("purchase/{customerId}")
     public List<Purchases> ordersByCustomersId(@PathVariable long customerId){
-        log.error("Showing purchasesByCustomerId " + customerId);
+        log.info("Showing purchasesByCustomerId " + customerId);
         return getCustomersOrders(customerId);
     }
 
