@@ -32,8 +32,8 @@ services:
     ports:
       - "3310:3306"
     environment:
-      MYSQL_USER: micro_user
-      MYSQL_PASSWORD: micro_password
+      MYSQL_USER: item_user
+      MYSQL_PASSWORD: item_password
       MYSQL_DB: item_db
       #depends_on:
       restart: always
