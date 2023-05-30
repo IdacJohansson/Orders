@@ -14,6 +14,7 @@ import java.util.List;
 @RequestMapping("purchases")
 public class PurchaseController {
 
+    @Autowired
     private final PurchaseRepo purchaseRepo;
 
     private static final Logger log = LoggerFactory.getLogger(PurchaseController.class);
@@ -38,12 +39,12 @@ public class PurchaseController {
         return purchaseRepo.findAll();
     }*/
 
-   @PostMapping(path = "/add") // integration test
+   @PostMapping(path = "purchases/add") // integration test
     public @ResponseBody String addNewPurchase(@RequestParam String date, @RequestParam Long customerId) {
 
         Purchases purchases = new Purchases();
         purchases.setDate(date);
-        purchases.setCustomerId(customerId);
+        //purchases.setCustomerId(customerId);
         purchaseRepo.save(purchases);
         return "Saved";
     }
