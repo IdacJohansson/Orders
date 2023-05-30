@@ -31,22 +31,22 @@ public class PurchaseController {
         return purchaseRepo.findAll();
     }
 
-    @PostMapping("/add")
+   /* @PostMapping("/add")
     public List<Purchases> addPurchase(@RequestBody Purchases p) {
         purchaseRepo.save(p);
         log.info("Purchase by " + p.getCustomerId() + " was added");
         return purchaseRepo.findAll();
-    }
+    }*/
 
-   /*@PostMapping(path = "/add") // Map ONLY POST Requests
-    public Purchases addNewPurchase(@RequestBody Purchases p) {
+   @PostMapping(path = "/add") // integration test
+    public @ResponseBody String addNewPurchase(@RequestParam String date, @RequestParam Long customerId) {
 
         Purchases purchases = new Purchases();
-        purchases.setDate(p.getDate());
-        purchases.setCustomerId(p.getCustomerId());
+        purchases.setDate(date);
+        purchases.setCustomerId(customerId);
         purchaseRepo.save(purchases);
-        return purchases;
-    }*/
+        return "Saved";
+    }
 
 
 
