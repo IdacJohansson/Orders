@@ -31,11 +31,22 @@ public class PurchaseController {
         return purchaseRepo.findAll();
     }
 
-    @PostMapping("purchase/add")
+   /*@PostMapping("/add")
     public List<Purchases> addPurchase(@RequestBody Purchases p) {
+        //Purchases purchases = restTemplate.getForObject()
         purchaseRepo.save(p);
         log.error("Purchase by " + p.getCustomerId() + " was added");
         return purchaseRepo.findAll();
+    }*/
+
+   @PostMapping(path = "/add") // Map ONLY POST Requests
+    public Purchases addNewPurchase(@RequestBody Purchases p) {
+
+        Purchases purchases = new Purchases();
+        purchases.setDate(p.getDate());
+        purchases.setCustomerId(p.getCustomerId());
+        purchaseRepo.save(purchases);
+        return purchases;
     }
 
 

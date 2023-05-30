@@ -4,16 +4,17 @@ services:
   #purchase
   purchases_container:
     container_name: purchases_container
+    image: mysql:latest
     ports:
-      - "80:3306"
+      - "3308:3306"
     environment:
-      MYSQL_USER: root
+      MYSQL_USER: springuser
       MYSQL_DATABASE: purchases_db
       MYSQL_PASSWORD: ${DB_PASSWORD}
-      MYSQL_ROOT_PASSWORD: yes
+      MYSQL_RANDOM_ROOT_PASSWORD: yes
       restart: always
 
-  customer-service:
+  customer-db:
     # build: .
     image: mysql
     ports:
@@ -22,5 +23,17 @@ services:
       MYSQL_USER: micro_user
       MYSQL_PASSWORD: micro_password
       MYSQL_DB: micro_db
+      #depends_on:
+      restart: always
+
+  item-db:
+    # build: .
+    image: mysql
+    ports:
+      - "3310:3306"
+    environment:
+      MYSQL_USER: micro_user
+      MYSQL_PASSWORD: micro_password
+      MYSQL_DB: item_db
       #depends_on:
       restart: always

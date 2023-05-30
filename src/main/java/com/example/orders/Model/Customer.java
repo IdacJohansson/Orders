@@ -9,19 +9,18 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Items {
+public class Customer {
 
     @Id
     @GeneratedValue
     private Long id;
-    private String name;
-    private double price;
-    private int balance;
+    private String customerName;
+    private String ssn;
 
 
-    public Items(String name, double price, int balance) {
-        this.name = name;
-        this.price = price;
-        this.balance = balance;
+    public Customer(String customerName, String ssn) {
+        this.customerName = customerName;
+        this.ssn = ssn;
+
     }
 }
