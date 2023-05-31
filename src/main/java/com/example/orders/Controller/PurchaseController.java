@@ -27,7 +27,7 @@ public class PurchaseController {
    }
 
 
-    @GetMapping("/all")
+    @GetMapping("/allpurchases")
     public List<Purchases> getAllPurchases() {
         return purchasesService.getAllPurchases();
     }
@@ -37,14 +37,8 @@ public class PurchaseController {
         return purchasesService.getPurchasesById(id);
     }
 
-   /* @PostMapping("/add")
-    public List<Purchases> addPurchase(@RequestBody Purchases p) {
-        purchaseRepo.save(p);
-        log.info("Purchase by " + p.getCustomerId() + " was added");
-        return purchaseRepo.findAll();
-    }*/
 
-   @PostMapping(path = "purchases/add") // integration test
+   @PostMapping(path = "/add") // integration test
     public @ResponseBody String addNewPurchase(@RequestParam String date, @RequestParam Long customerId) {
 
         Purchases purchases = new Purchases();
@@ -67,5 +61,12 @@ public class PurchaseController {
         log.info("Showing purchasesByCustomerId " + customerId);
         return getCustomersOrders(customerId);
     }
+
+    /* @PostMapping("/add")
+    public List<Purchases> addPurchase(@RequestBody Purchases p) {
+        purchaseRepo.save(p);
+        log.info("Purchase by " + p.getCustomerId() + " was added");
+        return purchaseRepo.findAll();
+    }*/
 
 }
