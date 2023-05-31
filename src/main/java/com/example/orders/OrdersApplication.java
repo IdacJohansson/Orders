@@ -100,11 +100,5 @@ public class OrdersApplication {
 
 
 
-       /*@Bean
-        RestTemplate restTemplate () {
-            RestTemplate restTemplate = new RestTemplate();
-            return restTemplate;
-        }*/
-
     }
 

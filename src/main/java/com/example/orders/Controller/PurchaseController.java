@@ -26,12 +26,6 @@ public class PurchaseController {
        this.purchaseRepo = purchaseRepo;
    }
 
-    /*@RequestMapping
-    public List<Purchases> getAllPurchases(){
-        log.info("Showing all purchases");
-        return purchasesService.getAllPurchases();
-    }*/
-
 
     @GetMapping("/all")
     public List<Purchases> getAllPurchases() {
