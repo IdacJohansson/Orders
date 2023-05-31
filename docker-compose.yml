@@ -4,7 +4,7 @@ services:
   #purchase
   purchases_container:
     container_name: purchases_container
-    image: mysql:latest
+    image: ghcr.io/idacjohansson/order:latest
     ports:
       - "3308:3306"
     environment:
